@@ -16,5 +16,9 @@ func (e *ErrorStat) IncErrCount() {
 }
 
 func (e *ErrorStat) CalculatePercentage() {
+	if e.RecordCount == 0 {
+		e.ErrorPercent = 100
+		return
+	}
 	e.ErrorPercent = float64(e.ErrorCount) / float64(e.RecordCount) * 100.0
 }
